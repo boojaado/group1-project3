@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="static/css/bootstrap.css">
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="static/css/style.css">
-    <script src="static/js/logic.js"></script>
+    <script src="static/js/logic_bar.js"></script>
 
    
     
@@ -59,12 +59,19 @@
       <br>
       <br>
       <div class="card border-primary" style="max-width: 20rem;">
-        <h4>Test Subject ID No.:</h4>
-        <select id="selDataset"></select>
+        <h4>Select Year</h4>
+        <select class="form-select"  id="filter" >
+        <option  value = '2020'>2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+      </select>
       </div>
       <br>
       <br>
-        <h1>Open the console!</h1>
+        <h1>Type of Crime vs Incidents</h1>
         <div id="plot"></div>
 
 
