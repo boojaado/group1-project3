@@ -5,13 +5,13 @@ var width = 460
 var height = 460
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#bubble")
   .append("svg")
     .attr("width", width)
     .attr("height", height)
 
 // Read data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv", function(data) {
+d3.csv("static/data/HateCrime_bias.csv.csv", function(data) {
 
   // Filter a bit the data -> more than 1 million inhabitants
   data = data.filter(function(d){ return d.value>10000000 })

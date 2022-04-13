@@ -27,7 +27,7 @@ function dowork(){
         // let incident = sub.map(x => x["Count"]);
         // let offrace= sub.map(x => x["Offender_Race"]);
         // let victims= sub.map(x => x["Victim_Sum"]);
-        makePlot(data);
+        makelolli(data);
 
 
     });
@@ -35,16 +35,17 @@ function dowork(){
 }
 
 
-function makePlot(data){
+function makelolli(data){
     // d3.selectALL("#filter").on('change',function(){
     //     dowork();
     // });
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 90, left: 40},
-    width = 460 - margin.left - margin.right,
+    width = $("#Lollipop").width() - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
+    $("#Lollipop").empty();
     var svg = d3.select("#Lollipop")
     .append("svg")
     .attr("width", width + margin.left + margin.right)

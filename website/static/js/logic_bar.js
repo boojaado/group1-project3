@@ -17,18 +17,21 @@ function getData() {
         let sub =data.filter(x =>x["Year"]===yearfilter);
         let crime = sub.map(x => x["Crime_Type"]);
         let count = sub.map(x => x["Count"]); // the + casts to number
-        makePlot(crime, count);
+        makebar(crime, count);
     });
 }
 
 
 
-function makePlot(crime, count) {
+function makebar(crime, count) {
     var trace1 = {
         x: crime,
         y: count,
         name: 'crime',
-        type: 'bar'
+        type: 'bar',
+        marker: {
+            color: '#442274'
+        }
     };
 
     var data = [trace1];
