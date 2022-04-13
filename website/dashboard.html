@@ -12,9 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    
-    <script src="static/js/logic_lollipop2.js"></script>
-    <!-- <script src="static/js/logic_bar.js"></script> -->
+    <script src="static/js/logic_bar.js"></script>
+    <!-- <script src="static/js/logic_lollipop2.js"></script> -->
+
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/bootstrap.css">
@@ -79,32 +79,41 @@
                   </div>
                 </div>
               </div>
-            </div>
-            
-              <!-- <div class="col-md-6">
-                <div class="card bg-light">
-                  <div class="card-body">
-                    <h1>Type of Crime vs Incidents</h1>
-                  <div id="plot"></div>
-                  </div>
-                </div>
-              </div> -->
-              <div class="col-md-6">
+          </div>
+              <div class="col-md-5">
                 <div class="card bg-light">
                   <div class="card-body">
                     <h1>Lollipop</h1>
-                    <div id = "Lollipop"></div>
+                  <div id="Lollipop"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="card bg-light">
+                  <div class="card-body">
+                    <h1>Extra graph</h1>
+                    <div id = "##"></div>
                   </div>
                 </div>
               </div>
           </div>
-            
-      </div>
-
+        </div>
+        <br>
+        <div class="container-fluid">
+          <div class="row justify-content-end">
+                <div class="col-md-10">
+                  <div class="card bg-light">
+                    <div class="card-body">
+                      <h1>Incidents per Crime</h1>
+                    <div id="plot"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
       <br>
       <br>
 
-      <div class="container-fluid">
+      <!-- <div class="container-fluid">
         <div class="col-md-8">
           <div class="card bg-light mb-6">
             <div class="card-body">
@@ -115,7 +124,7 @@
         </div>
       </div>
         <br>
-        <br>
+        <br> -->
         <!-- <div class="container-fluid">
           <div class="row">
                   <div class="card bg-light mb-6">
