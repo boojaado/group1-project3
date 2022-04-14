@@ -1,33 +1,51 @@
-https://d3-graph-gallery.com/graph/circularpacking_template.html
+$(document).ready(function() {
+  console.log("Page Loaded");
+  workbubble();
+  
+  $('#filter').on('change',function(){
+    workbubble();
+  });
+});
 
+function workbubble(){
+
+  let path1 = "static/data/HateCrime_bias1.csv";
+  d3.csv(path1).then(function(data1) {
+      console.log(data1);
+      let yearfilter = $('#filter').val();
+      let data = data1.filter(function(d){ return d.Year ==yearfilter})
+      makebubble(data);
+  });
+
+}
+function makebubble(data){
 // set the dimensions and margins of the graph
 var width = 460
 var height = 460
 
+$("#bubble").empty();
 // append the svg object to the body of the page
 var svg = d3.select("#bubble")
   .append("svg")
     .attr("width", width)
     .attr("height", height)
 
-// Read data
-d3.csv("static/data/HateCrime_bias.csv.csv", function(data) {
-
   // Filter a bit the data -> more than 1 million inhabitants
-  data = data.filter(function(d){ return d.value>10000000 })
-
+  // data = data.filter(function(d){ return d.value>10000000 })
   // Color palette for continents?
   var color = d3.scaleOrdinal()
-    .domain(["Asia", "Europe", "Africa", "Oceania", "Americas"])
-    .range(d3.schemeSet1);
+
+    .domain(["Midwest", "Northeast", "Other", "South", "US Territories", "West"])
+    .range(['#B7A4C2','#B080CC', '#d555f2', '#5E3F6F', 'D3BFDF','A39FA5']);
+    //.range(d3.schemeCategory10);
 
   // Size scale for countries
   var size = d3.scaleLinear()
-    .domain([0, 1400000000])
+    .domain([0, 1090])
     .range([7,55])  // circle will be between 7 and 55 px wide
 
   // create a tooltip
-  var Tooltip = d3.select("#my_dataviz")
+  var Tooltip = d3.select("#bubble")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -38,17 +56,17 @@ d3.csv("static/data/HateCrime_bias.csv.csv", function(data) {
     .style("padding", "5px")
 
   // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function(d) {
+  var mouseover = function(event, d) {
     Tooltip
       .style("opacity", 1)
   }
-  var mousemove = function(d) {
+  var mousemove = function(event, d) {
     Tooltip
-      .html('<u>' + d.key + '</u>' + "<br>" + d.value + " inhabitants")
-      .style("left", (d3.mouse(this)[0]+20) + "px")
-      .style("top", (d3.mouse(this)[1]) + "px")
+      .html('<u>' + d.Bias_Desc + '</u>' + "<br>" + d.Count + " Incidents")
+      .style("left", (event.x/2-500) + "px")
+      .style("top", (event.y/2-30) + "px")
   }
-  var mouseleave = function(d) {
+  var mouseleave = function(event, d) {
     Tooltip
       .style("opacity", 0)
   }
@@ -60,10 +78,10 @@ d3.csv("static/data/HateCrime_bias.csv.csv", function(data) {
     .enter()
     .append("circle")
       .attr("class", "node")
-      .attr("r", function(d){ return size(d.value)})
+      .attr("r", function(d){ return size(d.Count)})
       .attr("cx", width / 2)
       .attr("cy", height / 2)
-      .style("fill", function(d){ return color(d.region)})
+      .style("fill", function(d){ return color(d.Region_Name)})
       .style("fill-opacity", 0.8)
       .attr("stroke", "black")
       .style("stroke-width", 1)
@@ -79,32 +97,30 @@ d3.csv("static/data/HateCrime_bias.csv.csv", function(data) {
   var simulation = d3.forceSimulation()
       .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
       .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
-      .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.value)+3) }).iterations(1)) // Force that avoids circle overlapping
+      .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.Count)+3) }).iterations(1)) // Force that avoids circle overlapping
 
-  // Apply these forces to the nodes and update their positions.
-  // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
-  simulation
-      .nodes(data)
-      .on("tick", function(d){
-        node
-            .attr("cx", function(d){ return d.x; })
-            .attr("cy", function(d){ return d.y; })
-      });
+simulation
+    .nodes(data)
+    .on("tick", function(d){
+      node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y)
+    });
 
-  // What happens when a circle is dragged?
-  function dragstarted(d) {
-    if (!d3.event.active) simulation.alphaTarget(.03).restart();
-    d.fx = d.x;
-    d.fy = d.y;
-  }
-  function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
-  }
-  function dragended(d) {
-    if (!d3.event.active) simulation.alphaTarget(.03);
-    d.fx = null;
-    d.fy = null;
-  }
+// What happens when a circle is dragged?
+function dragstarted(event, d) {
+ if (!event.active) simulation.alphaTarget(.03).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+function dragged(event, d) {
+  d.fx = event.x;
+  d.fy = event.y;
+}
+function dragended(event, d) {
+ if (!event.active) simulation.alphaTarget(.03);
+  d.fx = null;
+  d.fy = null;
+}
 
-})
+}

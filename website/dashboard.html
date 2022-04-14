@@ -3,7 +3,7 @@
 
 <head>
     <meta charset = 'UTF-8'>
-    <title> HTML HW Webpages</title>
+    <title> Dashboard</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -11,9 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="static/js/logic_bar.js"></script>
     <script src="static/js/logic_lollipop2.js"></script>
+    <script src="static/js/logic_bubble.js"></script>
 
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -83,7 +85,7 @@
               <div class="col-md-5">
                 <div class="card bg-light">
                   <div class="card-body">
-                    <h1>Lollipop</h1>
+                    <h1>Incidents by Offender Race</h1>
                   <div id="Lollipop"></div>
                   </div>
                 </div>
@@ -91,8 +93,8 @@
               <div class="col-md-5">
                 <div class="card bg-light">
                   <div class="card-body">
-                    <h1>Extra graph</h1>
-                    <div id = "##"></div>
+                    <h1>Incidents by Bias Type</h1>
+                    <div id = "bubble"></div>
                   </div>
                 </div>
               </div>

@@ -36,7 +36,6 @@ function makebar(crime, count) {
 
     var data = [trace1];
 
-    var layout = { title: "crime count" };
 
-    Plotly.newPlot('plot', data, layout);
+    Plotly.newPlot('plot', data);
 }
