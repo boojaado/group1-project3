@@ -20,7 +20,7 @@ function workbubble(){
 }
 function makebubble(data){
 // set the dimensions and margins of the graph
-var width = 460
+var width = $("#bubble").width()
 var height = 460
 
 $("#bubble").empty();
@@ -36,7 +36,7 @@ var svg = d3.select("#bubble")
   var color = d3.scaleOrdinal()
 
     .domain(["Midwest", "Northeast", "Other", "South", "US Territories", "West"])
-    .range(['#B7A4C2','#B080CC', '#d555f2', '#5E3F6F', 'D3BFDF','A39FA5']);
+    .range(['#B7A4C2','#B080CC', '#9370DB', '#642592', '8B008B','000000']);
     //.range(d3.schemeCategory10);
 
   // Size scale for countries
@@ -62,15 +62,15 @@ var svg = d3.select("#bubble")
   }
   var mousemove = function(event, d) {
     Tooltip
-      .html('<u>' + d.Bias_Desc + '</u>' + "<br>" + d.Count + " Incidents")
-      .style("left", (event.x/2-500) + "px")
-      .style("top", (event.y/2-30) + "px")
+      .html("Bias: " + '<b>' + d.Bias_Desc + '</b>' + "<br>" +"Region: " + '<b>' +d.Region_Name +'</b>'+"<br>"+ " Incidents: " + '<b>' + d.Count +'</b>' )
+      .style("left", (event.x/2-350) + "px")
+      .style("top", (event.y/2-100) + "px")
   }
   var mouseleave = function(event, d) {
     Tooltip
       .style("opacity", 0)
   }
-
+ 
   // Initialize the circle: all located at the center of the svg area
   var node = svg.append("g")
     .selectAll("circle")
@@ -92,6 +92,9 @@ var svg = d3.select("#bubble")
            .on("start", dragstarted)
            .on("drag", dragged)
            .on("end", dragended));
+  
+
+  
 
   // Features of the forces applied to the nodes:
   var simulation = d3.forceSimulation()
@@ -99,6 +102,17 @@ var svg = d3.select("#bubble")
       .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
       .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.Count)+3) }).iterations(1)) // Force that avoids circle overlapping
 
+  // svg.append("g")
+  //   .attr("class", "legendOrdinal")
+  //   .attr("transform", "translate(600,40)");
+  
+  // var legendOrdinal = d3.legendColor()
+  //   .shape("path", d3.symbol().type(d3.symbolSquare).size(150)())
+  //   .shapePadding(10)
+  //   .scale(color);
+  
+  // svg.select(".legendOrdinal")
+  //   .call(legendOrdinal);   
 simulation
     .nodes(data)
     .on("tick", function(d){

@@ -67,6 +67,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-2">
+            <div class="col-md-12">
             <div class="card bg-light">
                 <div class="card-body">
                   <div class="card border-primary" style="max-width: 20rem;">
@@ -80,44 +81,102 @@
                     <option value="2015">2015</option>
                     </select>
                   </div>
+                  
                 </div>
               </div>
+              <br>
+              <div class="card bg-light">
+                
+                <div class="card-body" >
+                  <h2>Introduction</h2>
+                <hr>
+                <p class = "lead">To learn about hate crime incidents in the United States explore the dashboard in this page. </p>
+                <p class = "lead">Use the Year filter above to see how hate crime incidents have changed through out 2015-2020. </p>
+                <p class = "lead">Hover over each graphic for more information on the graph. </p>
+                <p class = "lead">Once finished, explore our <a href="map.html">Map Dashboard</a> to compare Hate Crime incidents through out the United States </p>
+                </div>
+              </div>
+            </div>
+            
           </div>
-              <div class="col-md-5">
+          <div class="col-md-10">
+
+            <div class="row">
+              <div class="col-md-6">
                 <div class="card bg-light">
                   <div class="card-body">
-                    <h1>Incidents by Offender Race</h1>
+                    <h2>Incidents by Offender Race</h2>
+                    <hr>
                   <div id="Lollipop"></div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-5">
+
+              <div class="col-md-6">
                 <div class="card bg-light">
                   <div class="card-body">
-                    <h1>Incidents by Bias Type</h1>
-                    <div id = "bubble"></div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-        <br>
-        <div class="container-fluid">
-          <div class="row justify-content-end">
-                <div class="col-md-10">
-                  <div class="card bg-light">
-                    <div class="card-body">
-                      <h1>Incidents per Crime</h1>
-                    <div id="plot"></div>
+                    <h2>Incidents by Bias Type</h2>
+                    <hr>
+                      <div class = 'container'>
+                        <div class ="row">
+                            <div class="col-md-2">
+                              Midwest
+                              <div class="Midwest">&nbsp;</div>
+                            </div>
+                            <div class="col-md-2">
+                              Northeast
+                              <div class="Northeast">&nbsp;</div>
+                            </div>
+                            <div class="col-md-2">
+                              Other
+                              <div class="Other">&nbsp;</div>
+                            </div>
+                            <div class="col-md-2">
+                              South
+                              <div class="South">&nbsp;</div>
+                            </div>
+                            <div class="col-md-2">
+                              US Terr
+                              <div class="USTerr">&nbsp;</div>
+                            </div>
+                            <div class="col-md-2">
+                              West
+                              <div class="West">&nbsp;</div>
+                            </div>
+                          </div>
+                      </div>
                     </div>
+                      <div id = "bubble">
+                        
+                      </div>
                   </div>
                 </div>
             </div>
-      <br>
-      <br>
 
-</div>
+              <br>
 
+                <div class="row justify-content-end">
+                      <div class="col-md-12">
+                        <div class="card bg-light">
+                          <div class="card-body">
+                            <h2>Incidents per Crime</h2>
+                            <hr>
+                            <div class = 'container-fluid'>
+                          <div id="plot"></div>
+                        </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+        <br>
+        <br>
+        </div>
+            
+          
+          
+          
+       
 </body>
 
 
