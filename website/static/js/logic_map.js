@@ -64,11 +64,11 @@ function createMap(data) {
         let location = [hatecrime.Latitude, hatecrime.Longitude]
 
         let circle = L.circle(location, {
-            color: "purple",
+            color: "indigo",
             fillColor: "white",
             fillOpacity: 0.8,
             radius: radius_size, 
-        }).bindPopup(`<h3>${hatecrime.State } Incident Count:${hatecrime.Count }</h3>`);
+        }).bindPopup(`<h3>${hatecrime.State } Incident Count:${hatecrime.Count}</h3>`);
         circles.push(circle);
     }
 
