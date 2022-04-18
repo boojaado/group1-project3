@@ -5,7 +5,7 @@
 The purpose of this project was to create an interactive dashboard in a website. The group was able to exlore hate crime data on the US and render it through visualizations in a working website. Website contains Home Page, Dashboard page, Map Page, About Us Page, Source Data Page, & Citations Page. 
 
 
-### Link Our Website
+### Our Website Link
 
  - [Hate Crime Website](https://boojaado.github.io/group1-project3/website/dashboard.html)
 
