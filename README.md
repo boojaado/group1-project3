@@ -17,10 +17,10 @@ Home page includes information on how hate crime is defined and resources for we
 
 
 ### Dashboard Page
-The group used JSON to read in data and build the three dashboards on page which may be filtered by year (shown on left of page).
+The group used JSON to read in data and build the three dashboards page which may be filtered by year (shown on left of page).
 The Lollipop chart (created using D3) shows incidents by offender race. The Lollipop chart has a tooltip when hovering over the circles. 
 The bubble chart  (created using D3) shows number of incidents by bias type. The bigger the circle the greater the number of incidents for that bias type.
-The 6 different colors are the region in the US wher ethe incidents occured. This chart also has a hover over tooltip in each circle describing the bias type, number of incidents, and region. Lastly the bar graph (created using plotly) compares the number of incidents by the type of crime commited. The graph is sorted greatest to smallest for easier understanding. 
+The 6 different colors are the region in the US where either incidents occured. This chart also has a hover over tooltip in each circle describing the bias type, number of incidents, and region. Lastly the bar graph (created using plotly) compares the number of incidents by the type of crime commited. The graph is sorted from greatest to smallest for ease of comprehension. 
 ![Dashboard](https://github.com/boojaado/group1-project3/blob/main/readmeImages/Dashboard.jpg?raw=true)
 
 
