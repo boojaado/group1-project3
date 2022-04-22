@@ -30,14 +30,11 @@ var svg = d3.select("#bubble")
     .attr("width", width)
     .attr("height", height)
 
-  // Filter a bit the data -> more than 1 million inhabitants
-  // data = data.filter(function(d){ return d.value>10000000 })
   // Color palette for continents?
   var color = d3.scaleOrdinal()
 
     .domain(["Midwest", "Northeast", "Other", "South", "US Territories", "West"])
     .range(['#B7A4C2','#B080CC', '#9370DB', '#642592', '8B008B','000000']);
-    //.range(d3.schemeCategory10);
 
   // Size scale for countries
   var size = d3.scaleLinear()
@@ -93,26 +90,12 @@ var svg = d3.select("#bubble")
            .on("drag", dragged)
            .on("end", dragended));
   
-
-  
-
   // Features of the forces applied to the nodes:
   var simulation = d3.forceSimulation()
       .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
       .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
       .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.Count)+3) }).iterations(1)) // Force that avoids circle overlapping
 
-  // svg.append("g")
-  //   .attr("class", "legendOrdinal")
-  //   .attr("transform", "translate(600,40)");
-  
-  // var legendOrdinal = d3.legendColor()
-  //   .shape("path", d3.symbol().type(d3.symbolSquare).size(150)())
-  //   .shapePadding(10)
-  //   .scale(color);
-  
-  // svg.select(".legendOrdinal")
-  //   .call(legendOrdinal);   
 simulation
     .nodes(data)
     .on("tick", function(d){

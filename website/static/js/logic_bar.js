@@ -12,18 +12,9 @@ function getData() {
 
     d3.csv(filepath).then(function(data) {
         console.log(data);
-
-        // let yearfilter = $('#filter').val();
-        // let sub =data.filter(x =>x["Year"]===yearfilter);
-        // let crime = sub.map(x => x["Crime_Type"]);
-        // let count = sub.map(x => x["Count"]); // the + casts to number
-        // let Counts = sub.map(x => x.Count).reduce((a, b) => a + b, 0)
-        
         makebar(data);
     });
 }
-
-
 
 function makebar(data) {
     let yearfilter = $('#filter').val();

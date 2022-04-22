@@ -9,26 +9,15 @@ function dowork(){
     let url = "static/data/HateCrime_Race.csv";
     d3.csv(url).then(function(data1) {
         console.log(data1);
-        // data1.forEach(function(d){
-        //     d.Count = +d.Count;
-        // });
-        // d3.selectALL("#filter").on('change',function(){
-        //     draw(this.value)
-        // })
+
         let yearfilter = $('#filter').val();
         let data = data1.filter(function(d){ return d.Year ==yearfilter})
-        // let yearfilter = $('#filter').val();
-        // let data =data1.filter(x =>x["Year"]===yearfilter);
-        // let incident = sub.map(x => x["Count"]);
-        // let offrace= sub.map(x => x["Offender_Race"]);
-        // let victims= sub.map(x => x["Victim_Sum"]);
+
         makelolli(data);
     });
 }
 function makelolli(data){
-    // d3.selectALL("#filter").on('change',function(){
-    //     dowork();
-    // });
+
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 60, left: 40},
     width = $("#Lollipop").width() - margin.left - margin.right,
@@ -59,30 +48,6 @@ function makelolli(data){
     chartGroup.append("g")
     .transition(200).duration(1000)
     .call(d3.axisLeft(y));
-    // var Tooltip = d3.select("#Lollipop")
-    // .append("div")
-    // .style("opacity", 0)
-    // .attr("class", "tooltip")
-    // .style("background-color", "white")
-    // .style("border", "solid")
-    // .style("border-width", "2px")
-    // .style("border-radius", "5px")
-    // .style("padding", "5px")
-    // // Three function that change the tooltip when user hover / move / leave a cell
-    // var mouseover = function(event, d) {
-    // Tooltip
-    //     .style("opacity", 1)
-    // }
-    // var mousemove = function(event, d) {
-    // Tooltip
-    //     .html("Bias: " + '<b>' + d.Offender_Race)
-    //     .style("left", (event.x/2-350) + "px")
-    //     .style("top", (event.y/2-100) + "px")
-    // }
-    // var mouseleave = function(event, d) {
-    // Tooltip
-    //     .style("opacity", 0)
-    // }
     // Lines
     chartGroup.selectAll("myline")
     .data(data)
@@ -114,7 +79,7 @@ function makelolli(data){
         .attr("class", "tooltip")
         .offset([80, -60])
         .html(function(d) {
-            return (`<hr><strong>Count: ${d.Count}</strong>`);
+            return (`<strong>${d.Offender_Race}<hr><strong>Count: ${d.Count}</strong>`);
         });
     // Step 2: Create the tooltip in chartGroup.
     circlesGroup.call(toolTip);
@@ -135,13 +100,5 @@ function makelolli(data){
                 .duration(1000)
                 .attr("r", 10);
         });
-    //     // Change the X coordinates of line and circle
-    // svg.selectAll("circle")
-    //     .transition()
-    //     .duration(2000)
-    //     .attr("cx", function(d) { return x(d.Count); })
-    // svg.selectAll("line")
-    //     .transition()
-    //     .duration(2000)
-    //     .attr("x1", function(d) { return x(d.Offender_Race); })
+
 }
